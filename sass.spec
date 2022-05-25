@@ -1,11 +1,12 @@
 # https://file.coffee/u/Gz5mMFn8_KItLQ.jpg
 %global debug_package %{nil}
+%global __os_install_post %{nil}
 %define _build_id_links none
 %define version 1.52.1
 
 Name: sass
 Version: %{version}
-Release: 3%{?dist}
+Release: 4%{?dist}
 Summary: The reference implementation of Sass, written in Dart
 License: MIT
 URL: https://sass-lang.com/dart-sass
