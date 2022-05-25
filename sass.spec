@@ -1,10 +1,11 @@
 # https://file.coffee/u/Gz5mMFn8_KItLQ.jpg
 %global debug_package %{nil}
+%define _build_id_links none
 %define version 1.52.1
 
 Name: sass
 Version: %{version}
-Release: 2%{?dist}
+Release: 3%{?dist}
 Summary: The reference implementation of Sass, written in Dart
 License: MIT
 URL: https://sass-lang.com/dart-sass
@@ -22,13 +23,7 @@ Dart Sass is the primary implementation of Sass, which means it gets new feature
 dart pub get
 
 %build
-dart compile exe ./bin/sass.dart -o sass-raw
-
-# Dart doesn't attach the build-id to the executable, so we have to do it manually. This is a hack, but it's the only way to get the build-id into the executable. (without me losing my mind, I've been searching for an hour on SO)
-echo 'void main() {}' > main.c
-gcc main.c
-objcopy a.out /dev/null --dump-section .note.gnu.build-id=id.data
-objcopy --add-section .note.gnu.build-id=id.data sass-raw sass
+dart compile exe ./bin/sass.dart -o sass
 
 %install
 mkdir -p %{buildroot}%{_bindir}
