@@ -2,7 +2,7 @@
 %global debug_package %{nil}
 %global __os_install_post %{nil}
 %define _build_id_links none
-%define version 1.52.1
+%define version 1.53.0
 
 Name: sass
 Version: %{version}
